@@ -46,6 +46,7 @@
      <Compile Include="Assets/Scripts/JointPosition.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceRequest.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/UnityColorMsg.cs" />
+     <Compile Include="Assets/RosMessages/KinovaTest/msg/KinovaMsgMsg.cs" />
      <None Include="Assets/URDF/kortex_description/CMakeLists.txt" />
      <None Include="Assets/URDF/kortex_description/package.xml" />
     <Reference Include="UnityEngine">
@@ -289,16 +290,16 @@
         <HintPath>/home/ywchang/Unity/Hub/Editor/2021.3.5f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="AssimpNet">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/PackageCache/com.unity.robotics.urdf-importer@90f353e435/Runtime/UnityMeshImporter/Plugins/AssimpNet/AssimpNet.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/PackageCache/com.unity.robotics.urdf-importer@90f353e435/Runtime/UnityMeshImporter/Plugins/AssimpNet/AssimpNet.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/PackageCache/com.unity.testtools.codecoverage@1.0.1/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/PackageCache/com.unity.testtools.codecoverage@1.0.1/lib/ReportGenerator/ReportGeneratorMerged.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>/home/ywchang/Unity/Hub/Editor/2021.3.5f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll</HintPath>
@@ -667,103 +668,103 @@
         <HintPath>/home/ywchang/Unity/Hub/Editor/2021.3.5f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Robotics.ROSTCPConnector">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Robotics.UrdfImporter.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.UrdfImporter.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.UrdfImporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Robotics.UrdfImporter">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.UrdfImporter.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.UrdfImporter.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Robotics.ROSTCPConnector.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="vhacd">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/vhacd.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/vhacd.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Robotics.ROSTCPConnector.Messages">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.Messages.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.Messages.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Services.Core.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Services.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.EditorCoroutines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Analytics">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Services.Core.Analytics.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Services.Core.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core.Environments">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Services.Core.Environments.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Services.Core.Environments.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Robotics.ROSTCPConnector.MessageGeneration">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.MessageGeneration.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.ROSTCPConnector.MessageGeneration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
-        <HintPath>/home/ywchang/Documents/Unity/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.VisualScripting.State.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
