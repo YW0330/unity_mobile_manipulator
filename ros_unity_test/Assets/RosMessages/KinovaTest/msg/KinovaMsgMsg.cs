@@ -14,15 +14,18 @@ namespace RosMessageTypes.KinovaTest
         public override string RosMessageName => k_RosMessageName;
 
         public float[] jointPos;
+        public float[] jointVel;
 
         public KinovaMsgMsg()
         {
             this.jointPos = new float[7];
+            this.jointVel = new float[7];
         }
 
-        public KinovaMsgMsg(float[] jointPos)
+        public KinovaMsgMsg(float[] jointPos, float[] jointVel)
         {
             this.jointPos = jointPos;
+            this.jointVel = jointVel;
         }
 
         public static KinovaMsgMsg Deserialize(MessageDeserializer deserializer) => new KinovaMsgMsg(deserializer);
@@ -30,17 +33,20 @@ namespace RosMessageTypes.KinovaTest
         private KinovaMsgMsg(MessageDeserializer deserializer)
         {
             deserializer.Read(out this.jointPos, sizeof(float), 7);
+            deserializer.Read(out this.jointVel, sizeof(float), 7);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
             serializer.Write(this.jointPos);
+            serializer.Write(this.jointVel);
         }
 
         public override string ToString()
         {
             return "KinovaMsgMsg: " +
-            "\njointPos: " + System.String.Join(", ", jointPos.ToList());
+            "\njointPos: " + System.String.Join(", ", jointPos.ToList()) +
+            "\njointVel: " + System.String.Join(", ", jointVel.ToList());
         }
 
 #if UNITY_EDITOR

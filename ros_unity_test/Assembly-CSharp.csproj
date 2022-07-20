@@ -41,12 +41,12 @@
      <Compile Include="Assets/RosSubscriberExample.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/ObjectPoseServiceResponse.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/PosRotMsg.cs" />
+     <Compile Include="Assets/RosMessages/KinovaTest/msg/KinovaMsgMsg.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceResponse.cs" />
      <Compile Include="Assets/RosPublisherExample.cs" />
      <Compile Include="Assets/Scripts/JointPosition.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceRequest.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/UnityColorMsg.cs" />
-     <Compile Include="Assets/RosMessages/KinovaTest/msg/KinovaMsgMsg.cs" />
      <None Include="Assets/URDF/kortex_description/CMakeLists.txt" />
      <None Include="Assets/URDF/kortex_description/package.xml" />
     <Reference Include="UnityEngine">

@@ -7,34 +7,22 @@ public class JointPosition : MonoBehaviour
 {
     MyController.RobotControl controller;
     public float speed;
-    public float torque;
-    public float acceleration;
     public ArticulationBody joint;
 
-    private float newTargetDelta;
     void Start()
     {
-        newTargetDelta = 0f;
+        speed = 0f;
         controller = (MyController.RobotControl)this.GetComponentInParent(typeof(MyController.RobotControl));
         joint = this.GetComponent<ArticulationBody>();
-        controller.UpdatePosition(this, newTargetDelta);
-        speed = controller.speed;
-        torque = controller.torque;
-        acceleration = controller.acceleration;
     }
 
     void FixedUpdate()
     {
-
-        speed = controller.speed;
-        torque = controller.torque;
-        acceleration = controller.acceleration;
-
-
         if (joint.jointType != ArticulationJointType.FixedJoint)
         {
 
             ArticulationDrive currentDrive = joint.xDrive;
+            float newTargetDelta = Time.fixedDeltaTime * speed;
 
             if (joint.jointType == ArticulationJointType.RevoluteJoint)
             {
@@ -60,5 +48,9 @@ public class JointPosition : MonoBehaviour
             }
             joint.xDrive = currentDrive;
         }
+    }
+    public void setSpeed(float jointSpeed)
+    {
+        speed = jointSpeed;
     }
 }

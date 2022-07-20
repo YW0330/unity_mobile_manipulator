@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
-using RosJointPos = RosMessageTypes.KinovaTest.KinovaMsgMsg;
+using RosJointInfo = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 namespace MyController
 {
     public class RobotControl : MonoBehaviour
@@ -11,16 +11,13 @@ namespace MyController
         // Stores original colors of the part being highlighted
         public float stiffness;
         public float damping;
-        public float speed = 5f; // Units: degree/s
-        public float torque = 100f; // Units: Nm or N
-        public float acceleration = 5f;// Units: m/s^2 / degree/s^2
         [SerializeField] bool RosEnable = false;
 
         private int[] home = { 0, 15, 180, -130, 0, 55, 90 };
         private int[] currentPos = new int[7];
         void Start()
         {
-            ROSConnection.GetOrCreateInstance().Subscribe<RosJointPos>("jointPos", PosChange);
+            ROSConnection.GetOrCreateInstance().Subscribe<RosJointInfo>("jointInfo", PosChange);
             articulationChain = this.GetComponentsInChildren<ArticulationBody>();
             int defDyanmicVal = 10;
             foreach (ArticulationBody joint in articulationChain)
@@ -33,9 +30,7 @@ namespace MyController
 
         void Update()
         {
-            if (RosEnable)
-                StartCoroutine(DelayFunc(currentPos));
-            else
+            if (!RosEnable)
                 StartCoroutine(DelayFunc(home));
         }
 
@@ -58,18 +53,13 @@ namespace MyController
             }
         }
 
-        private void PosChange(RosJointPos posMessage)
+        private void PosChange(RosJointInfo msg)
         {
 
             for (int i = 0; i < 7; i++)
             {
-                if (posMessage.jointPos[i] >= 360)
-                    posMessage.jointPos[i] = 0;
-                if (i == 3)
-                    currentPos[i] = (int)posMessage.jointPos[i] - 360;
-                else
-                    currentPos[i] = (int)posMessage.jointPos[i];
-                Debug.Log(currentPos[i]);
+                JointPosition joint = articulationChain[i + 1].GetComponent<JointPosition>();
+                joint.setSpeed(msg.jointVel[i]);
             }
 
         }
