@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Robotics.UrdfImporter;
-
-public class JointPosition : MonoBehaviour
+public class JointPosChange : MonoBehaviour
 {
-    MyController.RobotControl controller;
     public float speed;
     public ArticulationBody joint;
 
     void Start()
     {
         speed = 0f;
-        controller = (MyController.RobotControl)this.GetComponentInParent(typeof(MyController.RobotControl));
         joint = this.GetComponent<ArticulationBody>();
     }
 
