@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
-using RosJointInfo = RosMessageTypes.KinovaTest.KinovaMsgMsg;
+using JointInfo = RosMessageTypes.KinovaTest.KinovaMsgMsg;
+using GripperInfo = RosMessageTypes.KinovaTest.GripperMsgMsg;
+
 public class RobotControl : MonoBehaviour
 {
     private ArticulationBody[] articulationChain;
@@ -10,11 +12,14 @@ public class RobotControl : MonoBehaviour
     public float stiffness;
     public float damping;
     [SerializeField] bool RosEnable = false;
+    private float gripperCurrentPos;
 
-    private int[] home = { 0, 15, 180, -130, 0, 55, 90 };
+    private float[] home = { 0, 15, 180, -130, 0, 55, 90 };
     void Start()
     {
-        ROSConnection.GetOrCreateInstance().Subscribe<RosJointInfo>("jointInfo", PosChange);
+        gripperCurrentPos = 0f;
+        ROSConnection.GetOrCreateInstance().Subscribe<JointInfo>("jointInfo", PosChange);
+        ROSConnection.GetOrCreateInstance().Subscribe<GripperInfo>("gripperInfo", GripperChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
         int defDyanmicVal = 10;
         foreach (ArticulationBody joint in articulationChain)
@@ -40,7 +45,7 @@ public class RobotControl : MonoBehaviour
         drive.target = angle;
         joint.joint.xDrive = drive;
     }
-    IEnumerator DelayFunc(int[] angle)
+    IEnumerator DelayFunc(float[] angle)
     {
         WaitForSeconds wait = new WaitForSeconds(0.001f);
         for (int i = 1; i < 8; i++)
@@ -49,14 +54,42 @@ public class RobotControl : MonoBehaviour
             UpdatePosition(joint, angle[i - 1]);
             yield return wait;
         }
+        // 加入夾爪
+        for (int k = 0; k < 2; k++)
+        {
+            JointPosChange joint = articulationChain[10 + k * 5].GetComponent<JointPosChange>();
+            UpdatePosition(joint, 0); // 正數 left/right inner knuckle
+            joint = articulationChain[11 + k * 5].GetComponent<JointPosChange>();
+            UpdatePosition(joint, 0); // 正數 left/right outer knuckle
+            joint = articulationChain[13 + k * 5].GetComponent<JointPosChange>();
+            UpdatePosition(joint, 0); // 負數 left/right inner finger
+            yield return wait;
+        }
     }
 
-    private void PosChange(RosJointInfo msg)
+    private void PosChange(JointInfo msg)
     {
         for (int i = 0; i < 7; i++)
         {
             JointPosChange joint = articulationChain[i + 1].GetComponent<JointPosChange>();
             joint.setSpeed(msg.jointVel[i]);
         }
+    }
+
+    private void GripperChange(GripperInfo msg)
+    {
+        float speed = msg.gripperVel;
+        if (gripperCurrentPos > msg.gripperPos)
+            speed *= -1;
+        for (int k = 0; k < 2; k += 1)
+        {
+            JointPosChange joint = articulationChain[10 + k * 5].GetComponent<JointPosChange>();
+            joint.setSpeed(speed);
+            joint = articulationChain[11 + k * 5].GetComponent<JointPosChange>();
+            joint.setSpeed(speed);
+            joint = articulationChain[13 + k * 5].GetComponent<JointPosChange>();
+            joint.setSpeed(-speed);
+        }
+        gripperCurrentPos = msg.gripperPos;
     }
 }
