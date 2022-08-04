@@ -15,17 +15,23 @@ namespace RosMessageTypes.KinovaTest
 
         public float[] jointPos;
         public float[] jointVel;
+        public float gripperPos;
+        public float gripperVel;
 
         public KinovaMsgMsg()
         {
             this.jointPos = new float[7];
             this.jointVel = new float[7];
+            this.gripperPos = 0.0f;
+            this.gripperVel = 0.0f;
         }
 
-        public KinovaMsgMsg(float[] jointPos, float[] jointVel)
+        public KinovaMsgMsg(float[] jointPos, float[] jointVel, float gripperPos, float gripperVel)
         {
             this.jointPos = jointPos;
             this.jointVel = jointVel;
+            this.gripperPos = gripperPos;
+            this.gripperVel = gripperVel;
         }
 
         public static KinovaMsgMsg Deserialize(MessageDeserializer deserializer) => new KinovaMsgMsg(deserializer);
@@ -34,19 +40,25 @@ namespace RosMessageTypes.KinovaTest
         {
             deserializer.Read(out this.jointPos, sizeof(float), 7);
             deserializer.Read(out this.jointVel, sizeof(float), 7);
+            deserializer.Read(out this.gripperPos);
+            deserializer.Read(out this.gripperVel);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
             serializer.Write(this.jointPos);
             serializer.Write(this.jointVel);
+            serializer.Write(this.gripperPos);
+            serializer.Write(this.gripperVel);
         }
 
         public override string ToString()
         {
             return "KinovaMsgMsg: " +
             "\njointPos: " + System.String.Join(", ", jointPos.ToList()) +
-            "\njointVel: " + System.String.Join(", ", jointVel.ToList());
+            "\njointVel: " + System.String.Join(", ", jointVel.ToList()) +
+            "\ngripperPos: " + gripperPos.ToString() +
+            "\ngripperVel: " + gripperVel.ToString();
         }
 
 #if UNITY_EDITOR

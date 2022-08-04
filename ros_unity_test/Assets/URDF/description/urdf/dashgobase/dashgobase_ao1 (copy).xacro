@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+
+<robot name="box_robot" 
+       xmlns:xacro="http://ros.org/wiki/xacro"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor">
+
+   <!-- Define a number of dimensions using properties -->
+   <xacro:property name="torso_offset_x" value="0.0" />
+   <xacro:property name="torso_offset_y" value="0.0" />
+   <xacro:property name="torso_offset_z" value="0.23" /> <!--base_height/2+torso_height/2 -->
+
+   <!-- Include all component files -->
+   <xacro:include filename="$(find description)/urdf/dashgobase/materials.urdf.xacro" />
+   <xacro:include filename="$(find description)/urdf/dashgobase/base1.urdf.xacro" />
+   <xacro:include filename="$(find description)/urdf/dashgobase/torso.urdf.xacro" />
+
+
+   <!--<xacro:include filename="$(find description)/urdf/dashgobase/sick_tim.urdf.xacro" />-->
+   <!--<xacro:include filename="$(find description)/urdf/dashgobase/_d435.urdf.xacro" />-->
+   <!--<link name="base_link" />-->
+   <!--<sensor_d435 parent="base_link">
+     <origin xyz="0.02 0.02 0.55" rpy="0 0 0"/>
+   </sensor_d435>-->
+  
+   
+   <!--<xacro:sick_tim551 name="laser" ros_topic="scan" />-->
+   <!--<xacro:sensor_d435 name="camera" parent="base_link"/>-->
+   <!-- Add the base and wheels -->
+   <base name="base" color="Black"/>
+   
+   <!-- Attach the torso -->
+<!--
+   <torso name="torso" parent="base" color="Grey">
+      <origin xyz="${torso_offset_x} ${torso_offset_y} ${torso_offset_z}" rpy="0 0 0" />
+   </torso>
+-->
+
+<link name="red_cross">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.12 0.051 0.01" />
+        </geometry>
+        <material name="Red" />
+      </visual>
+  </link>
+
+  <joint name="red_middle_cross" type="fixed">
+    <origin xyz="0 0 ${base_length+0.131}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="red_cross" />
+  </joint>
+
+  <link name="red_cross2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.051 0.12 0.01" />
+        </geometry>
+        <material name="Red" />
+      </visual>
+  </link>
+
+  <joint name="red_middle_cross2" type="fixed">
+    <origin xyz="0 0 ${base_length+0.131}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="red_cross2" />
+  </joint>
+  
+  <link name="white_square">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.21 0.21 0.005" />
+        </geometry>
+        <material name="Black" />
+      </visual>
+  </link>
+
+  <joint name="white_middle_square" type="fixed">
+    <origin xyz="0 0 ${base_length+0.13}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="white_square" />
+  </joint>
+  
+  <link name="pillar1">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.018 0.018 0.24" />
+        </geometry>
+        <material name="White" />
+      </visual>
+  </link>
+
+  <joint name="pollar_rb_1" type="fixed">
+    <origin xyz="-0.142 -0.118 ${base_length}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="pillar1" />
+  </joint>
+  
+  <link name="pillar2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.018 0.018 0.24" />
+        </geometry>
+        <material name="White" />
+      </visual>
+  </link>
+
+  <joint name="pollar_rb_2" type="fixed">
+    <origin xyz="-0.142 0.118 ${base_length}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="pillar2" />
+  </joint>
+  
+  <link name="top_disc">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.30 0.30 0.01"/>
+        </geometry>
+        <material name="White" />               
+      </visual>
+  </link>
+
+  <joint name="top_t_disc" type="fixed">
+    <origin xyz="0 0 ${base_length+0.12}" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="top_disc" />
+  </joint>
+  
+  <link name="laser">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.05 0.05 0.05"/>
+        </geometry>
+        <material name="Black" />               
+      </visual>
+  </link>-->
+
+  <joint name="top_t_laser" type="fixed">
+    
+    <origin xyz="0.155 0 0.1" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="laser" />
+  </joint>
+  
+
+</robot>
+
+

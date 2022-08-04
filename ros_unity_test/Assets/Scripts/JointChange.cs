@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class JointPosChange : MonoBehaviour
+public class JointChange : MonoBehaviour
 {
     public float speed;
     public ArticulationBody joint;

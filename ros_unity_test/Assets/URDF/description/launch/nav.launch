@@ -1,0 +1,8 @@
+<launch>
+  <include file="$(find description)/launch/all_driver.launch"/>
+  <include file="$(find nav)/launch/nav.launch"/>
+  <node name="rviz" pkg="rviz" type="rviz" />
+
+
+
+</launch>
