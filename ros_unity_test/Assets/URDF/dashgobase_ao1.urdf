@@ -39,10 +39,11 @@
   <material name="TransparentGreen">
     <color rgba="0.0 0.8 0.0 0.5"/>
   </material>
+
   <link name="base_link">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="1.3729096e+00"/>
+      <mass value="40"/>
       <inertia ixx="8.7002718e-03" ixy="-4.7576583e-05" ixz="1.1160499e-04" iyy="8.6195418e-03" iyz="-3.5422299e-06" izz="1.4612727e-02"/>
     </inertial>
     <visual>
@@ -77,7 +78,7 @@
       <geometry>
         <cylinder length="0.03" radius="0.0595"/>
       </geometry>
-      <material name="Orange"/>
+      <material name="Black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -88,7 +89,7 @@
   </link>
   <joint name="base_l_wheel_joint" type="continuous">
     <!-- <safety_controller k_velocity="10"/> -->
-    <origin rpy="1.5707963 0 0" xyz="0.0 0.18 -0.08"/>
+    <origin rpy="-1.5707963 0 0" xyz="0.0 0.18 -0.08"/>
     <parent link="base_link"/>
     <child link="base_l_wheel_link"/>
     <axis xyz="0 0 1"/>
@@ -106,7 +107,7 @@
       <geometry>
         <cylinder length="0.03" radius="0.0595"/>
       </geometry>
-      <material name="Orange"/>
+      <material name="Black"/>
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>

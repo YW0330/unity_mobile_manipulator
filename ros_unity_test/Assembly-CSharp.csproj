@@ -43,11 +43,11 @@
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/PosRotMsg.cs" />
      <Compile Include="Assets/RosMessages/KinovaTest/msg/KinovaMsgMsg.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceResponse.cs" />
+     <Compile Include="Assets/Scripts/AGVController.cs" />
      <Compile Include="Assets/Scripts/RosPublisherExample.cs" />
+     <Compile Include="Assets/Scripts/JointChange.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceRequest.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/UnityColorMsg.cs" />
-     <Compile Include="Assets/Scripts/JointChange.cs" />
-     <Compile Include="Assets/Scripts/AGVController.cs" />
      <None Include="Assets/URDF/description/package.xml" />
      <None Include="Assets/URDF/description/urdf/readme.txt" />
      <None Include="Assets/URDF/description/CMakeLists.txt" />

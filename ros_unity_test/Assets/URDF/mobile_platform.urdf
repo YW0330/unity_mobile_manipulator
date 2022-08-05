@@ -1,0 +1,175 @@
+<robot name="mobile_platform" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://ros.org/wiki/xacro">
+    <material name="Black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+    </material>
+    <material name="White">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0"/>
+            <mass value="36"/>
+            <inertia ixx="8.268e-3" ixy="0" ixz="0" iyy="8.268e-3" iyz="0" izz="9.6e-3"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/car.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="White"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/car.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="base_left_wheel_link">
+        <inertial>
+            <origin xyz="0 0 0"/>
+            <mass value="2"/>
+            <inertia ixx="4.82e-4" ixy="0" ixz="0" iyy="4.82e-4" iyz="0" izz="4.82e-4"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_big.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_big.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="left_wheel_joint" type="continuous">
+        <!-- <safety_controller k_velocity="10"/> -->
+        <origin rpy="0 1.5707 0" xyz="0.01 0.15 0.05"/>
+        <parent link="base_link"/>
+        <child link="base_left_wheel_link"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="100" velocity="100"/>
+    </joint>
+
+
+    <link name="base_right_wheel_link">
+        <inertial>
+            <origin xyz="0 0 0"/>
+            <mass value="2"/>
+            <inertia ixx="4.82e-4" ixy="0" ixz="0" iyy="4.82e-4" iyz="0" izz="4.82e-4"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_big.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_big.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="left_right_joint" type="continuous">
+        <!-- <safety_controller k_velocity="10"/> -->
+        <origin rpy="0 1.5707 0" xyz="0.34 0.15 0.05"/>
+        <parent link="base_link"/>
+        <child link="base_right_wheel_link"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="100" velocity="100"/>
+    </joint>
+
+    <link name="base_auxiliary_wheel_1_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="auxiliary_wheel_1" type="fixed">
+        <origin rpy="0 1.5707 0" xyz="0.01 0.05 0"/>
+        <parent link="base_link"/>
+        <child link="base_auxiliary_wheel_1_link"/>
+    </joint>
+
+    <link name="base_auxiliary_wheel_2_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="auxiliary_wheel_2" type="fixed">
+        <origin rpy="0 1.5707 0" xyz="0.01 0.3 0"/>
+        <parent link="base_link"/>
+        <child link="base_auxiliary_wheel_2_link"/>
+    </joint>
+
+    <link name="base_auxiliary_wheel_3_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="auxiliary_wheel_3" type="fixed">
+        <origin rpy="0 1.5707 0" xyz="0.34 0.3 0"/>
+        <parent link="base_link"/>
+        <child link="base_auxiliary_wheel_3_link"/>
+    </joint>
+
+    <link name="base_auxiliary_wheel_4_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="Black"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/wheel_small.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="auxiliary_wheel_4" type="fixed">
+        <origin rpy="0 1.5707 0" xyz="0.34 0.05 0"/>
+        <parent link="base_link"/>
+        <child link="base_auxiliary_wheel_4_link"/>
+    </joint>
+
+
+
+</robot>
