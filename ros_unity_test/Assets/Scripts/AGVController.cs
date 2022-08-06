@@ -19,7 +19,7 @@ namespace RosSharp.Control
         public float maxLinearSpeed = 2; //  m/s
         public float maxRotationalSpeed = 1;//
         public float wheelRadius = 0.06f; //meters
-        public float trackWidth = 0.175f; // meters Distance between tyres
+        public float trackWidth = 0.37f; // meters Distance between tyres
         public float forceLimit = 100;
         public float damping = 10;
 

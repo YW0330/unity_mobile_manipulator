@@ -48,9 +48,6 @@
      <Compile Include="Assets/Scripts/JointChange.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceRequest.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/UnityColorMsg.cs" />
-     <None Include="Assets/URDF/description/package.xml" />
-     <None Include="Assets/URDF/description/urdf/readme.txt" />
-     <None Include="Assets/URDF/description/CMakeLists.txt" />
      <None Include="Assets/URDF/kortex_description/CMakeLists.txt" />
      <None Include="Assets/URDF/kortex_description/package.xml" />
     <Reference Include="UnityEngine">
