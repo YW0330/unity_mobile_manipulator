@@ -15,6 +15,8 @@ namespace RosMessageTypes.KinovaTest
 
         public float[] jointPos;
         public float[] jointVel;
+        public double[] kinova_X;
+        public double[] kinova_dX;
         public float gripperPos;
         public float gripperVel;
 
@@ -22,14 +24,18 @@ namespace RosMessageTypes.KinovaTest
         {
             this.jointPos = new float[7];
             this.jointVel = new float[7];
+            this.kinova_X = new double[3];
+            this.kinova_dX = new double[3];
             this.gripperPos = 0.0f;
             this.gripperVel = 0.0f;
         }
 
-        public KinovaMsgMsg(float[] jointPos, float[] jointVel, float gripperPos, float gripperVel)
+        public KinovaMsgMsg(float[] jointPos, float[] jointVel, double[] kinova_X, double[] kinova_dX, float gripperPos, float gripperVel)
         {
             this.jointPos = jointPos;
             this.jointVel = jointVel;
+            this.kinova_X = kinova_X;
+            this.kinova_dX = kinova_dX;
             this.gripperPos = gripperPos;
             this.gripperVel = gripperVel;
         }
@@ -40,6 +46,8 @@ namespace RosMessageTypes.KinovaTest
         {
             deserializer.Read(out this.jointPos, sizeof(float), 7);
             deserializer.Read(out this.jointVel, sizeof(float), 7);
+            deserializer.Read(out this.kinova_X, sizeof(double), 3);
+            deserializer.Read(out this.kinova_dX, sizeof(double), 3);
             deserializer.Read(out this.gripperPos);
             deserializer.Read(out this.gripperVel);
         }
@@ -48,6 +56,8 @@ namespace RosMessageTypes.KinovaTest
         {
             serializer.Write(this.jointPos);
             serializer.Write(this.jointVel);
+            serializer.Write(this.kinova_X);
+            serializer.Write(this.kinova_dX);
             serializer.Write(this.gripperPos);
             serializer.Write(this.gripperVel);
         }
@@ -57,6 +67,8 @@ namespace RosMessageTypes.KinovaTest
             return "KinovaMsgMsg: " +
             "\njointPos: " + System.String.Join(", ", jointPos.ToList()) +
             "\njointVel: " + System.String.Join(", ", jointVel.ToList()) +
+            "\nkinova_X: " + System.String.Join(", ", kinova_X.ToList()) +
+            "\nkinova_dX: " + System.String.Join(", ", kinova_dX.ToList()) +
             "\ngripperPos: " + gripperPos.ToString() +
             "\ngripperVel: " + gripperVel.ToString();
         }
