@@ -1,5 +1,5 @@
-# Unity Kinova Gen3 Demos
-ROS kinetic 環境下，進行 Unity 與 Kinova Gen3。
+# Unity Kinova Gen3 Demo
+ROS kinetic 環境下，進行 Unity 與 Kinova Gen3 同步操作。
 
 - [開發文件](https://hackmd.io/kZdWdeeBRZKJ2jkXbACzWw)
 - 操作方法

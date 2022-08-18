@@ -18493,7 +18493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067f99212002706f0b648bcb09729ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stiffness: 10000000
+  stiffness: 60000
   damping: 0
   RosEnable: 0
 --- !u!1 &2075501438

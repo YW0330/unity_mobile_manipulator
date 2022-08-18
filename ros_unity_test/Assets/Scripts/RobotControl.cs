@@ -23,7 +23,7 @@ public class RobotControl : MonoBehaviour
         gripperCurrentPos = 0f;
         ROSConnection.GetOrCreateInstance().Subscribe<kinovaMsg>("kinovaInfo", kinovaInfoChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
-        int defDyanmicVal = 10;
+        float defDyanmicVal = 1.5f;
         foreach (ArticulationBody joint in articulationChain)
         {
             joint.gameObject.AddComponent<JointChange>();
@@ -51,8 +51,7 @@ public class RobotControl : MonoBehaviour
     }
     IEnumerator DelayFunc(float[] jointAngle, float gripperAngle)
     {
-        // WaitForSeconds wait = new WaitForSeconds(0.0001f);
-        WaitForSeconds wait = new WaitForSeconds(0f);
+        WaitForSeconds wait = new WaitForSeconds(0.0001f);
         for (int i = 1; i < 8; i++)
         {
             JointChange joint = articulationChain[i].GetComponent<JointChange>();
@@ -78,7 +77,6 @@ public class RobotControl : MonoBehaviour
         for (int i = 0; i < 7; i++)
         {
             curr_pos[i] = msg.jointPos[i] + 360 * countCircle[i];
-            // Debug.Log(i + 1 + "       " + msg.jointPos[i] + "     " + curr_pos[i]);
             if (curr_pos[i] - prev_pos[i] > 270)
             {
                 curr_pos[i] -= 360;
@@ -92,6 +90,5 @@ public class RobotControl : MonoBehaviour
             prev_pos[i] = curr_pos[i];
         }
         gripperCurrentPos = msg.gripperPos;
-        Debug.Log(msg.gripperPos + "       " + gripperCurrentPos);
     }
 }
