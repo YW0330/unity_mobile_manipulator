@@ -24,17 +24,25 @@ public class WWM_control : MonoBehaviour
         gripperCurrentPos = 0f;
         ROSConnection.GetOrCreateInstance().Subscribe<kinovaMsg>("kinovaInfo", kinovaInfoChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
-        float defDyanmicVal = 1.5f;
         for (int i = 0; i < articulationChain.Length; i++)
         {
             ArticulationBody joint = articulationChain[i].GetComponent<ArticulationBody>();
             joint.gameObject.AddComponent<JointChange>();
-            joint.jointFriction = defDyanmicVal;
-            joint.angularDamping = defDyanmicVal;
-            if (i > 28 || i == 0)
+            if (i > 27)
                 joint.useGravity = true;
             else
                 joint.useGravity = false; // 不考慮重力影響，即假設有做好重力補償
+            if (i >= 6 && i <= 8)
+            {
+                // 第5 6 7軸
+                joint.jointFriction = 0.5f;
+                joint.angularDamping = 0.5f;
+            }
+            else
+            {
+                joint.jointFriction = 1.5f;
+                joint.angularDamping = 1.5f;
+            }
         }
     }
 

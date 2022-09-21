@@ -51,7 +51,7 @@ public class RobotControl : MonoBehaviour
     }
     IEnumerator DelayFunc(float[] jointAngle, float gripperAngle)
     {
-        WaitForSeconds wait = new WaitForSeconds(0.0001f);
+        WaitForSeconds wait = new WaitForSeconds(0.01f);
         for (int i = 1; i < 8; i++)
         {
             JointChange joint = articulationChain[i].GetComponent<JointChange>();
