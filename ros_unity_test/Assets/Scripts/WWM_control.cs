@@ -12,13 +12,16 @@ public class WWM_control : MonoBehaviour
     public float damping;
     [SerializeField] bool RosEnable = false;
     private float gripperCurrentPos;
+    private float[] home = { 0f, 15f, 180f, -130f, 0f, 55f, 90f };
+    private float[] prev_pos = { 0f, 15f, 180f, -130f, 0f, 55f, 90f };
     private float[] curr_pos = new float[7];
+    private int[] countCircle = new int[7];
     void Start()
     {
         gripperCurrentPos = 0f;
         ROSConnection.GetOrCreateInstance().Subscribe<kinovaMsg>("kinovaInfo", kinovaInfoChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
-        float defDyanmicVal = 1.5f;
+        float defDyanmicVal = 1f;
         for (int i = 0; i < articulationChain.Length; i++)
         {
             ArticulationBody joint = articulationChain[i].GetComponent<ArticulationBody>();
@@ -34,7 +37,9 @@ public class WWM_control : MonoBehaviour
 
     void Update()
     {
-        if (RosEnable)
+        if (!RosEnable)
+            StartCoroutine(DelayFunc(home, gripperCurrentPos));
+        else
             StartCoroutine(DelayFunc(curr_pos, gripperCurrentPos));
     }
 
@@ -71,9 +76,23 @@ public class WWM_control : MonoBehaviour
     private void kinovaInfoChange(kinovaMsg msg)
     {
         RosEnable = true;
+
         // joint
         for (int i = 0; i < 7; i++)
-            curr_pos[i] = msg.jointPos[i];
+        {
+            curr_pos[i] = msg.jointPos[i] + 360 * countCircle[i];
+            if (curr_pos[i] - prev_pos[i] > 270)
+            {
+                curr_pos[i] -= 360;
+                countCircle[i]--;
+            }
+            else if (curr_pos[i] - prev_pos[i] < -270)
+            {
+                curr_pos[i] += 360;
+                countCircle[i]++;
+            }
+            prev_pos[i] = curr_pos[i];
+        }
         // gripper
         gripperCurrentPos = msg.gripperPos;
     }
