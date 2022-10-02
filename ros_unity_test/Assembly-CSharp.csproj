@@ -696,6 +696,9 @@
     <Reference Include="Unity.Robotics.UrdfImporter">
         <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.UrdfImporter.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Robotics.Visualizations">
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.Visualizations.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
         <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
@@ -716,6 +719,9 @@
     </Reference>
     <Reference Include="vhacd">
         <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/vhacd.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Robotics.Visualizations.Editor">
+        <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.Robotics.Visualizations.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
         <HintPath>/home/ywchang/Documents/Unity/unity_kinova/ros_unity_test/Library/ScriptAssemblies/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
