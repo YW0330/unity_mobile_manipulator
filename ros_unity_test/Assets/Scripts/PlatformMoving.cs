@@ -10,17 +10,19 @@ public class PlatformMoving : MonoBehaviour
     public GameObject platform;
 
     private Vector3 position = Vector3.zero;
+    private Vector3 offset_pos = new Vector3(0, 0.06f, 0);
     private Quaternion rotation = Quaternion.identity;
     void Start()
     {
-        ROSConnection.GetOrCreateInstance().Subscribe<RosOdom>("odom", odomChange);
-
+        // start the ROS connection
+        ROSConnection ros = ROSConnection.GetOrCreateInstance();
+        ros.Subscribe<RosOdom>("odom", odomChange);
     }
 
     // Update is called once per frame
     void Update()
     {
-        platform.transform.position = position;
+        platform.transform.position = position + offset_pos;
         platform.transform.rotation = rotation;
     }
 
@@ -46,6 +48,4 @@ public class PlatformMoving : MonoBehaviour
             (float)odomMsg.pose.pose.orientation.w
         );
     }
-
-
 }

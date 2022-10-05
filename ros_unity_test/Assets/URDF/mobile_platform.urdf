@@ -10,23 +10,23 @@
         <color rgba="0.3 0.3 0.3 1.0"/>
     </material>
 
-    <link name="base_link">
+    <link name="base_platform">
         <inertial>
-            <origin rpy="0 0 1.5707963" xyz="-0.2 0 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
             <mass value="36"/>
             <inertia ixx="8.268e-3" ixy="0" ixz="0" iyy="8.268e-3" iyz="0" izz="9.6e-3"/>
         </inertial>
         <visual>
-            <origin rpy="0 0 1.5707963" xyz="0 -0.2 0"/>
-            <geometry>
-                <mesh filename="package://platform_description/meshes/car.STL" scale="0.001 0.001 0.001"/>
-            </geometry>
             <material name="White"/>
+            <origin rpy="0 0 0" xyz="-0.2 -0.2 0"/>
+            <geometry>
+                <mesh filename="package://platform_description/meshes/platform.STL" scale="0.001 0.001 0.001"/>
+            </geometry>
         </visual>
         <collision>
-            <origin rpy="0 0 1.5707963" xyz="0 -0.2 0"/>
+            <origin rpy="0 0 0" xyz="-0.2 -0.2 0"/>
             <geometry>
-                <mesh filename="package://platform_description/meshes/car.STL" scale="0.001 0.001 0.001"/>
+              <mesh filename="package://platform_description/meshes/platform.STL" scale="0.001 0.001 0.001"/>
             </geometry>
         </collision>
     </link>
@@ -52,8 +52,8 @@
         </collision>
     </link>
     <joint name="left_wheel_joint" type="continuous">
-        <origin rpy="-1.5707963 0 0" xyz="-0.2 0.15 0"/>
-        <parent link="base_link"/>
+        <origin rpy="-1.5707963 0 0" xyz="0 0.15 0"/>
+        <parent link="base_platform"/>
         <child link="base_left_wheel_link"/>
         <axis xyz="0 0 1"/>
         <limit effort="100" velocity="100"/>
@@ -80,8 +80,8 @@
         </collision>
     </link>
     <joint name="right_wheel_joint" type="continuous">
-        <origin rpy="-1.5707963 0 0" xyz="-0.2 -0.15 0"/>
-        <parent link="base_link"/>
+        <origin rpy="-1.5707963 0 0" xyz="0 -0.15 0"/>
+        <parent link="base_platform"/>
         <child link="base_right_wheel_link"/>
         <axis xyz="0 0 1"/>
         <limit effort="100" velocity="100"/>
@@ -96,22 +96,22 @@
         </collision>
     </link>
     <joint name="front_wheel" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 -0.03"/>
-        <parent link="base_link"/>
+        <origin rpy="0 0 0" xyz="0.15 0 -0.025"/>
+        <parent link="base_platform"/>
         <child link="base_front_wheel_link"/>
     </joint>
 
     <link name="base_back_wheel_link">
         <collision>
-            <origin rpy="0 0 0" xyz="-0.05 0 0"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <sphere radius="0.03"/>
             </geometry>
         </collision>
     </link>
     <joint name="back_wheel" type="fixed">
-        <origin rpy="0 0 0" xyz="-0.35 0 -0.03"/>
-        <parent link="base_link"/>
+        <origin rpy="0 0 0" xyz="-0.15 0 -0.025"/>
+        <parent link="base_platform"/>
         <child link="base_back_wheel_link"/>
     </joint>
 
@@ -125,8 +125,8 @@
         </visual>
     </link>
     <joint name="top_t_laser" type="fixed">
-        <origin rpy="0 0 0" xyz="-0.05 0 0.16"/>
-        <parent link="base_link"/>
+        <origin rpy="0 0 0" xyz="0.15 0 0.16"/>
+        <parent link="base_platform"/>
         <child link="laser"/>
     </joint>
 

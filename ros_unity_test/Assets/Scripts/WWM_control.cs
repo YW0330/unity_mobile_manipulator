@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
-using kinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
+using RosKinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 
 public class WWM_control : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class WWM_control : MonoBehaviour
     void Start()
     {
         gripperCurrentPos = 0f;
-        ROSConnection.GetOrCreateInstance().Subscribe<kinovaMsg>("kinovaInfo", kinovaInfoChange);
+        ROSConnection.GetOrCreateInstance().Subscribe<RosKinovaMsg>("kinovaInfo", kinovaInfoChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
         float defDyanmicVal = 1f;
         for (int i = 0; i < articulationChain.Length; i++)
@@ -73,7 +73,7 @@ public class WWM_control : MonoBehaviour
         }
     }
 
-    private void kinovaInfoChange(kinovaMsg msg)
+    private void kinovaInfoChange(RosKinovaMsg msg)
     {
         RosEnable = true;
 
