@@ -37,7 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/ObjectPoseServiceRequest.cs" />
-     <Compile Include="Assets/Scripts/RobotControl.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/ObjectPoseServiceResponse.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/PosRotMsg.cs" />
      <Compile Include="Assets/Scripts/WWM_control.cs" />
@@ -46,7 +45,6 @@
      <Compile Include="Assets/Scripts/AGVController.cs" />
      <Compile Include="Assets/Scripts/PlatformMoving.cs" />
      <Compile Include="Assets/Scripts/BuildWall.cs" />
-     <Compile Include="Assets/Scripts/JointChange.cs" />
      <Compile Include="Assets/Scripts/DestroyWall.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/srv/PositionServiceRequest.cs" />
      <Compile Include="Assets/RosMessages/UnityRoboticsDemo/msg/UnityColorMsg.cs" />

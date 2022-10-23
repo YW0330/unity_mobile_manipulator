@@ -21,11 +21,10 @@ public class WWM_control : MonoBehaviour
         gripperCurrentPos = 0f;
         ROSConnection.GetOrCreateInstance().Subscribe<RosKinovaMsg>("kinovaInfo", kinovaInfoChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
-        float defDyanmicVal = 1f;
+        float defDyanmicVal = 2f;
         for (int i = 0; i < articulationChain.Length; i++)
         {
             ArticulationBody joint = articulationChain[i].GetComponent<ArticulationBody>();
-            joint.gameObject.AddComponent<JointChange>();
             joint.jointFriction = defDyanmicVal;
             joint.angularDamping = defDyanmicVal;
             if (i > 27)
@@ -43,31 +42,31 @@ public class WWM_control : MonoBehaviour
             StartCoroutine(DelayFunc(curr_pos, gripperCurrentPos));
     }
 
-    public void UpdatePosition(JointChange joint, float angle)
+    public void UpdatePosition(ArticulationBody joint, float angle)
     {
-        ArticulationDrive drive = joint.joint.xDrive;
+        ArticulationDrive drive = joint.xDrive;
         drive.stiffness = stiffness;
         drive.damping = damping;
         drive.target = angle;
-        joint.joint.xDrive = drive;
+        joint.xDrive = drive;
     }
     IEnumerator DelayFunc(float[] jointAngle, float gripperAngle)
     {
         WaitForSeconds wait = new WaitForSeconds(0.0001f);
         for (int i = 2; i < 9; i++)
         {
-            JointChange joint = articulationChain[i].GetComponent<JointChange>();
+            ArticulationBody joint = articulationChain[i].GetComponent<ArticulationBody>();
             UpdatePosition(joint, jointAngle[i - 2]);
             yield return wait;
         }
         // 加入夾爪
         for (int k = 0; k < 2; k++)
         {
-            JointChange joint = articulationChain[11 + k * 5].GetComponent<JointChange>();
+            ArticulationBody joint = articulationChain[11 + k * 5].GetComponent<ArticulationBody>();
             UpdatePosition(joint, gripperAngle); // 正數 left/right inner knuckle
-            joint = articulationChain[12 + k * 5].GetComponent<JointChange>();
+            joint = articulationChain[12 + k * 5].GetComponent<ArticulationBody>();
             UpdatePosition(joint, gripperAngle); // 正數 left/right outer knuckle
-            joint = articulationChain[14 + k * 5].GetComponent<JointChange>();
+            joint = articulationChain[14 + k * 5].GetComponent<ArticulationBody>();
             UpdatePosition(joint, -gripperAngle); // 負數 left/right inner finger
             yield return wait;
         }

@@ -21,7 +21,6 @@ namespace RosMessageTypes.KinovaTest
         public double[] kinova_axis;
         public double[] kinova_dX;
         public float gripperPos;
-        public float gripperVel;
 
         public KinovaMsgMsg()
         {
@@ -33,10 +32,9 @@ namespace RosMessageTypes.KinovaTest
             this.kinova_axis = new double[3];
             this.kinova_dX = new double[3];
             this.gripperPos = 0.0f;
-            this.gripperVel = 0.0f;
         }
 
-        public KinovaMsgMsg(double time, float[] jointPos, float[] jointVel, double[] kinova_X, double[] kinova_Xd, double[] kinova_axis, double[] kinova_dX, float gripperPos, float gripperVel)
+        public KinovaMsgMsg(double time, float[] jointPos, float[] jointVel, double[] kinova_X, double[] kinova_Xd, double[] kinova_axis, double[] kinova_dX, float gripperPos)
         {
             this.time = time;
             this.jointPos = jointPos;
@@ -46,7 +44,6 @@ namespace RosMessageTypes.KinovaTest
             this.kinova_axis = kinova_axis;
             this.kinova_dX = kinova_dX;
             this.gripperPos = gripperPos;
-            this.gripperVel = gripperVel;
         }
 
         public static KinovaMsgMsg Deserialize(MessageDeserializer deserializer) => new KinovaMsgMsg(deserializer);
@@ -61,7 +58,6 @@ namespace RosMessageTypes.KinovaTest
             deserializer.Read(out this.kinova_axis, sizeof(double), 3);
             deserializer.Read(out this.kinova_dX, sizeof(double), 3);
             deserializer.Read(out this.gripperPos);
-            deserializer.Read(out this.gripperVel);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
@@ -74,7 +70,6 @@ namespace RosMessageTypes.KinovaTest
             serializer.Write(this.kinova_axis);
             serializer.Write(this.kinova_dX);
             serializer.Write(this.gripperPos);
-            serializer.Write(this.gripperVel);
         }
 
         public override string ToString()
@@ -87,8 +82,7 @@ namespace RosMessageTypes.KinovaTest
             "\nkinova_Xd: " + System.String.Join(", ", kinova_Xd.ToList()) +
             "\nkinova_axis: " + System.String.Join(", ", kinova_axis.ToList()) +
             "\nkinova_dX: " + System.String.Join(", ", kinova_dX.ToList()) +
-            "\ngripperPos: " + gripperPos.ToString() +
-            "\ngripperVel: " + gripperVel.ToString();
+            "\ngripperPos: " + gripperPos.ToString();
         }
 
 #if UNITY_EDITOR
