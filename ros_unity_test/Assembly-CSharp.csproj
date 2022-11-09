@@ -42,7 +42,6 @@
      <Compile Include="Assets/Scripts/AGVController.cs" />
      <Compile Include="Assets/Scripts/PlatformMoving.cs" />
      <Compile Include="Assets/Scripts/BuildWall.cs" />
-     <Compile Include="Assets/Scripts/DestroyWall.cs" />
      <None Include="Assets/URDF/kortex_description/CMakeLists.txt" />
      <None Include="Assets/URDF/kortex_description/package.xml" />
     <Reference Include="UnityEngine">

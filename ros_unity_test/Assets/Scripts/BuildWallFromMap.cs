@@ -11,6 +11,7 @@ public class BuildWallFromMap : MonoBehaviour
     int width;
     int height;
     List<sbyte> data;
+    GameObject parents;
     void Start()
     {
         ROSConnection ros = ROSConnection.GetOrCreateInstance();
@@ -29,15 +30,13 @@ public class BuildWallFromMap : MonoBehaviour
         var rotation = msg.info.origin.orientation.From<FLU>();
         rotation.eulerAngles += new Vector3(0, -90, 0); // TODO: Account for differing texture origin
         var scale = msg.info.resolution;
-
-        Vector3 drawOrigin = origin - rotation * new Vector3(scale * 0.5f, 0, scale * 0.5f);
-        // Vector3 drawOrigin = origin - rotation * new Vector3(scale, 0, scale);
         drawMap(origin, rotation, scale);
     }
 
     void drawMap(Vector3 pose, Quaternion rotation, float scale)
     {
-        GameObject parents = new GameObject("Wall");
+        Destroy(parents);
+        parents = new GameObject("Wall");
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
@@ -47,7 +46,7 @@ public class BuildWallFromMap : MonoBehaviour
                     Vector3 point = new Vector3(j, 0, i);
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.transform.position = point * scale;
-                    cube.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+                    cube.transform.localScale = new Vector3(0.05f, 0.6f, 0.05f);
                     cube.transform.parent = parents.transform;
                 }
             }
