@@ -2,3 +2,4 @@ Logs/
 obj/
 Library/
 .vscode/
+*.csproj

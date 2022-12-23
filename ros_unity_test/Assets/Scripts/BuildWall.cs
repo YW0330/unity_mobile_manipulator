@@ -24,7 +24,6 @@ public class BuildWall : MonoBehaviour
 
 
             GameObject cube1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube1.AddComponent<DestroyWall>();
             cube1.transform.position = new Vector3((point1.x + point2.x) / 2, 1f, (point1.z + point2.z) / 2);
             cube1.transform.rotation = Quaternion.Euler(0, -Mathf.Atan2((point2.z - point1.z), (point2.x - point1.x)) * 57.3f, 0);
             cube1.transform.localScale = new Vector3(Mathf.Sqrt((point2.x - point1.x) * (point2.x - point1.x) + (point2.z - point1.z) * (point2.z - point1.z)), 0.5f, 0.05f);
