@@ -10,7 +10,7 @@ public class WWM_control : MonoBehaviour
     // Stores original colors of the part being highlighted
     public float stiffness;
     public float damping;
-    [SerializeField] bool RosEnable = false;
+    bool isMessageReceived = false;
     private float gripperCurrentPos;
     private float[] home = { 0f, 15f, 180f, -130f, 0f, 55f, 90f };
     private float[] prev_pos = { 0f, 15f, 180f, -130f, 0f, 55f, 90f };
@@ -36,7 +36,7 @@ public class WWM_control : MonoBehaviour
 
     void Update()
     {
-        if (!RosEnable)
+        if (!isMessageReceived)
             StartCoroutine(DelayFunc(home, gripperCurrentPos));
         else
             StartCoroutine(DelayFunc(curr_pos, gripperCurrentPos));
@@ -74,8 +74,6 @@ public class WWM_control : MonoBehaviour
 
     private void kinovaInfoChange(RosKinovaMsg msg)
     {
-        RosEnable = true;
-
         // joint
         for (int i = 0; i < 7; i++)
         {
@@ -94,5 +92,6 @@ public class WWM_control : MonoBehaviour
         }
         // gripper
         gripperCurrentPos = msg.gripperPos;
+        isMessageReceived = true;
     }
 }
