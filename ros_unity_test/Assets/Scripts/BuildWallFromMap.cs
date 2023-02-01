@@ -6,52 +6,68 @@ using RosMessageTypes.Nav;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 
+public class Map
+{
+    public int width;
+    public int height;
+    public List<sbyte> data;
+    public Vector3 origin;
+    public Quaternion rotation;
+    public float scale;
+}
+
 public class BuildWallFromMap : MonoBehaviour
 {
-    int width;
-    int height;
-    List<sbyte> data;
+    Map map;
     GameObject parents;
+    ROSConnection ros;
+    bool isMessageReceived = false;
     void Start()
     {
-        ROSConnection ros = ROSConnection.GetOrCreateInstance();
+        ros = ROSConnection.GetOrCreateInstance();
         ros.Subscribe<OccupancyGridMsg>("map", mapChange);
+        map = new Map();
     }
 
     void Update()
     {
+        if (isMessageReceived)
+        {
+            drawMap();
+            isMessageReceived = false;
+        }
     }
     void mapChange(OccupancyGridMsg msg)
     {
-        width = (int)msg.info.width;
-        height = (int)msg.info.height;
-        data = msg.data.ToList();
-        var origin = msg.info.origin.position.From<FLU>();
-        var rotation = msg.info.origin.orientation.From<FLU>();
-        rotation.eulerAngles += new Vector3(0, -90, 0); // TODO: Account for differing texture origin
-        var scale = msg.info.resolution;
-        drawMap(origin, rotation, scale);
+        map.width = (int)msg.info.width;
+        map.height = (int)msg.info.height;
+        map.data = msg.data.ToList();
+        map.origin = msg.info.origin.position.From<FLU>();
+        map.rotation = msg.info.origin.orientation.From<FLU>();
+        map.rotation.eulerAngles += new Vector3(0, -90, 0); // TODO: Account for differing texture origin
+        map.scale = msg.info.resolution;
+        isMessageReceived = true;
     }
 
-    void drawMap(Vector3 pose, Quaternion rotation, float scale)
+    void drawMap()
     {
         Destroy(parents);
         parents = new GameObject("Wall");
-        for (int i = 0; i < height; i++)
+        for (int i = 0; i < map.height; i++)
         {
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < map.width; j++)
             {
-                if (data[i * width + j] == 100)
+                if (map.data[i * map.width + j] == 100)
                 {
                     Vector3 point = new Vector3(j, 0, i);
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    cube.transform.position = point * scale;
+                    cube.transform.position = point * map.scale;
                     cube.transform.localScale = new Vector3(0.05f, 0.6f, 0.05f);
                     cube.transform.parent = parents.transform;
                 }
             }
         }
-        parents.transform.position = pose;
-        parents.transform.rotation = rotation;
+        parents.transform.position = map.origin;
+        parents.transform.rotation = map.rotation;
     }
 }
