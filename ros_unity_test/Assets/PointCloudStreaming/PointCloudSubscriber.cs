@@ -1,7 +1,8 @@
 ﻿using System;
-using RosPointCloud2 = RosMessageTypes.Sensor.PointCloud2Msg;
-using Unity.Robotics.ROSTCPConnector;
 using UnityEngine;
+using Unity.Robotics.ROSTCPConnector;
+using RosPointCloud2 = RosMessageTypes.Sensor.PointCloud2Msg;
+using RosKinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 
 
 namespace CustomerVision
@@ -9,10 +10,7 @@ namespace CustomerVision
     public class PointCloudSubscriber : MonoBehaviour
     {
         private byte[] byteArray;
-        private bool isMessageReceived = false;
-        bool readyToProcessMessage = true;
         private int size;
-        private ROSConnection ros;
         private Vector3[] pcl;
         private Color[] pcl_color;
 
@@ -20,6 +18,8 @@ namespace CustomerVision
         int height;
         int row_step;
         int point_step;
+        private ROSConnection ros;
+        private bool isMessageReceived = false;
 
         void Start()
         {
@@ -29,14 +29,11 @@ namespace CustomerVision
 
         public void Update()
         {
-
             if (isMessageReceived)
             {
                 PointCloudRendering();
                 isMessageReceived = false;
             }
-
-
         }
 
         void ReceiveMessage(RosPointCloud2 message)
@@ -99,10 +96,8 @@ namespace CustomerVision
                 g = g / rgb_max;
                 b = b / rgb_max;
 
-                pcl[n] = new Vector3(x, z, y);
+                pcl[n] = new Vector3(-y, z, x);
                 pcl_color[n] = new Color(r, g, b);
-
-
             }
         }
 

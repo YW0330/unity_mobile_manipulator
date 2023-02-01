@@ -22,9 +22,6 @@ public class PointCloudRenderer : MonoBehaviour
     private Vector3[] positions = new Vector3[] { new Vector3(0, 0, 0), new Vector3(0, 1, 0) };
     private Color[] colours = new Color[] { new Color(1f, 0f, 0f), new Color(0f, 1f, 0f) };
 
-
-    public Transform offset; // Put any gameobject that faciliatates adjusting the origin of the pointcloud in VR. 
-
     void Start()
     {
         // Give all the required components to the gameObject
@@ -36,9 +33,6 @@ public class PointCloudRenderer : MonoBehaviour
             // Use 32 bit integer values for the mesh, allows for stupid amount of vertices (2,147,483,647 I think?)
             indexFormat = UnityEngine.Rendering.IndexFormat.UInt32
         };
-
-        transform.position = offset.position;
-        transform.rotation = offset.rotation;
     }
 
     void UpdateMesh()
@@ -47,30 +41,24 @@ public class PointCloudRenderer : MonoBehaviour
         positions = subscriber.GetPCL();
         colours = subscriber.GetPCLColor();
         if (positions == null)
-        {
             return;
-        }
         mesh.Clear();
         mesh.vertices = positions;
         mesh.colors = colours;
+
         int[] indices = new int[positions.Length];
-
         for (int i = 0; i < positions.Length; i++)
-        {
             indices[i] = i;
-        }
-
         mesh.SetIndices(indices, MeshTopology.Points, 0);
-        mf.mesh = mesh;
 
+        mf.mesh = mesh;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = offset.position;
-        transform.rotation = offset.rotation;
         meshRenderer.material.SetFloat("_PointSize", pointSize);
         UpdateMesh();
     }
+
 }
