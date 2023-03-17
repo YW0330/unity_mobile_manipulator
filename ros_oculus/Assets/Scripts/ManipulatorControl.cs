@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using RosKinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 
-public class Manipulator_control : MonoBehaviour
+public class ManipulatorControl : MonoBehaviour
 {
     private ArticulationBody[] articulationChain;
     // Stores original colors of the part being highlighted
