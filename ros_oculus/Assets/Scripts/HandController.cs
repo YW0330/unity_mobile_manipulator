@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class HandController : MonoBehaviour
 {
     [SerializeField] InputActionReference primaryButtonAction;
-    private bool pressedCount = false;
+    private int pressedCount = 0;
     private void OnEnable()
     {
         primaryButtonAction.action.performed += PrimaryPressed;
@@ -18,11 +18,11 @@ public class HandController : MonoBehaviour
 
     private void PrimaryPressed(InputAction.CallbackContext context)
     {
-        if (!pressedCount)
-            Debug.Log("Platform");
-        else
-            Debug.Log("Manipulator");
+        pressedCount++;
+    }
 
-        pressedCount = !pressedCount;
+    public int GetPressedCount()
+    {
+        return pressedCount;
     }
 }
