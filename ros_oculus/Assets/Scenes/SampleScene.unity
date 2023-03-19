@@ -1093,6 +1093,7 @@ GameObject:
   - component: {fileID: 64605684}
   - component: {fileID: 64605685}
   - component: {fileID: 64605687}
+  - component: {fileID: 64605688}
   m_Layer: 0
   m_Name: Functions
   m_TagString: Untagged
@@ -1141,6 +1142,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryButtonAction: {fileID: 1970361450346405197, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
+--- !u!114 &64605688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6014b3795407e4b43a0391a3d87654ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handController: {fileID: 64605687}
+  publishMsgFreq: 0.5
 --- !u!1 &71796118
 GameObject:
   m_ObjectHideFlags: 8
