@@ -29,7 +29,7 @@ public class BuildWallFromMap : MonoBehaviour
         map = new Map();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isMessageReceived)
         {

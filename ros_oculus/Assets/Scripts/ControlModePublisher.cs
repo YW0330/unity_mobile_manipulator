@@ -20,12 +20,12 @@ public class ControlModePublisher : MonoBehaviour
         ros.RegisterPublisher<RosBoolMsg>(topicname);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         timeElapsed += Time.deltaTime;
         if (timeElapsed > publishMsgFreq)
         {
-            RosBoolMsg msg = new RosBoolMsg((handController.GetPressedCount() % 2) != 0);
+            RosBoolMsg msg = new RosBoolMsg((handController.GetPrimaryBtnCount() % 2) != 0);
             ros.Publish(topicname, msg);
             timeElapsed = 0;
         }

@@ -6,20 +6,18 @@ using RosOdom = RosMessageTypes.Nav.OdometryMsg;
 
 public class PlatformMoving : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject platform;
 
     private Vector3 position = Vector3.zero;
     private Vector3 offset_pos = new Vector3(0, 0.06f, 0);
     private Quaternion rotation = Quaternion.identity;
+    ROSConnection ros;
     void Start()
     {
-        // start the ROS connection
-        ROSConnection ros = ROSConnection.GetOrCreateInstance();
+        ros = ROSConnection.GetOrCreateInstance();
         ros.Subscribe<RosOdom>("odom", odomChange);
     }
 
-    // Update is called once per frame
     void Update()
     {
         platform.transform.position = position + offset_pos;

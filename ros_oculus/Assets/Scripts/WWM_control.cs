@@ -7,19 +7,20 @@ using RosKinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 public class WWM_control : MonoBehaviour
 {
     private ArticulationBody[] articulationChain;
-    // Stores original colors of the part being highlighted
     public float stiffness;
     public float damping;
     bool isMessageReceived = false;
-    private float gripperCurrentPos;
+    private float gripperCurrentPos = 0f;
     private float[] home = { 0f, 15f, 180f, -130f, 0f, 55f, 90f };
     private float[] prev_pos = { 0f, 15f, 180f, -130f, 0f, 55f, 90f };
     private float[] curr_pos = new float[7];
     private int[] countCircle = new int[7];
+
+    ROSConnection ros;
     void Start()
     {
-        gripperCurrentPos = 0f;
-        ROSConnection.GetOrCreateInstance().Subscribe<RosKinovaMsg>("kinovaInfo", kinovaInfoChange);
+        ros = ROSConnection.GetOrCreateInstance();
+        ros.Subscribe<RosKinovaMsg>("kinovaInfo", kinovaInfoChange);
         articulationChain = this.GetComponentsInChildren<ArticulationBody>();
         float defDyanmicVal = 2f;
         for (int i = 0; i < articulationChain.Length; i++)
@@ -40,36 +41,37 @@ public class WWM_control : MonoBehaviour
             StartCoroutine(DelayFunc(home, gripperCurrentPos));
         else
             StartCoroutine(DelayFunc(curr_pos, gripperCurrentPos));
+
     }
 
-    public void UpdatePosition(ArticulationBody joint, float angle)
-    {
-        ArticulationDrive drive = joint.xDrive;
-        drive.stiffness = stiffness;
-        drive.damping = damping;
-        drive.target = angle;
-        joint.xDrive = drive;
-    }
     IEnumerator DelayFunc(float[] jointAngle, float gripperAngle)
     {
         WaitForSeconds wait = new WaitForSeconds(0.0001f);
         for (int i = 2; i < 9; i++)
         {
             ArticulationBody joint = articulationChain[i].GetComponent<ArticulationBody>();
-            UpdatePosition(joint, jointAngle[i - 2]);
+            UpdateJointPosition(joint, jointAngle[i - 2]);
             yield return wait;
         }
         // 加入夾爪
         for (int k = 0; k < 2; k++)
         {
             ArticulationBody joint = articulationChain[11 + k * 5].GetComponent<ArticulationBody>();
-            UpdatePosition(joint, gripperAngle); // 正數 left/right inner knuckle
+            UpdateJointPosition(joint, gripperAngle); // 正數 left/right inner knuckle
             joint = articulationChain[12 + k * 5].GetComponent<ArticulationBody>();
-            UpdatePosition(joint, gripperAngle); // 正數 left/right outer knuckle
+            UpdateJointPosition(joint, gripperAngle); // 正數 left/right outer knuckle
             joint = articulationChain[14 + k * 5].GetComponent<ArticulationBody>();
-            UpdatePosition(joint, -gripperAngle); // 負數 left/right inner finger
+            UpdateJointPosition(joint, -gripperAngle); // 負數 left/right inner finger
             yield return wait;
         }
+    }
+    private void UpdateJointPosition(ArticulationBody joint, float angle)
+    {
+        ArticulationDrive drive = joint.xDrive;
+        drive.stiffness = stiffness;
+        drive.damping = damping;
+        drive.target = angle;
+        joint.xDrive = drive;
     }
 
     private void kinovaInfoChange(RosKinovaMsg msg)

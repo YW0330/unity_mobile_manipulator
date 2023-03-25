@@ -10,14 +10,11 @@ public class DisplayROSImage : MonoBehaviour
     Texture2D textRos;
     private bool isMessageReceived = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         ros = ROSConnection.GetOrCreateInstance();
         ros.Subscribe<RosImage>("/camera/color/image_raw", imageChange);
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (isMessageReceived)

@@ -7,7 +7,6 @@ using RosKinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 public class ManipulatorControl : MonoBehaviour
 {
     private ArticulationBody[] articulationChain;
-    // Stores original colors of the part being highlighted
     public float stiffness;
     public float damping;
     bool isMessageReceived = false;
@@ -30,7 +29,7 @@ public class ManipulatorControl : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!isMessageReceived)
             StartCoroutine(DelayFunc(home, gripperCurrentPos));
