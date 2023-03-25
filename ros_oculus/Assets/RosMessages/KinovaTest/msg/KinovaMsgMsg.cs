@@ -15,34 +15,31 @@ namespace RosMessageTypes.KinovaTest
 
         public double time;
         public float[] jointPos;
-        public float[] jointVel;
         public double[] kinova_X;
         public double[] kinova_Xd;
         public double[] kinova_axis;
-        public double[] kinova_dX;
+        public double[] kinova_axisd;
         public float gripperPos;
 
         public KinovaMsgMsg()
         {
             this.time = 0.0;
             this.jointPos = new float[7];
-            this.jointVel = new float[7];
             this.kinova_X = new double[3];
             this.kinova_Xd = new double[3];
             this.kinova_axis = new double[3];
-            this.kinova_dX = new double[3];
+            this.kinova_axisd = new double[3];
             this.gripperPos = 0.0f;
         }
 
-        public KinovaMsgMsg(double time, float[] jointPos, float[] jointVel, double[] kinova_X, double[] kinova_Xd, double[] kinova_axis, double[] kinova_dX, float gripperPos)
+        public KinovaMsgMsg(double time, float[] jointPos, double[] kinova_X, double[] kinova_Xd, double[] kinova_axis, double[] kinova_axisd, float gripperPos)
         {
             this.time = time;
             this.jointPos = jointPos;
-            this.jointVel = jointVel;
             this.kinova_X = kinova_X;
             this.kinova_Xd = kinova_Xd;
             this.kinova_axis = kinova_axis;
-            this.kinova_dX = kinova_dX;
+            this.kinova_axisd = kinova_axisd;
             this.gripperPos = gripperPos;
         }
 
@@ -52,11 +49,10 @@ namespace RosMessageTypes.KinovaTest
         {
             deserializer.Read(out this.time);
             deserializer.Read(out this.jointPos, sizeof(float), 7);
-            deserializer.Read(out this.jointVel, sizeof(float), 7);
             deserializer.Read(out this.kinova_X, sizeof(double), 3);
             deserializer.Read(out this.kinova_Xd, sizeof(double), 3);
             deserializer.Read(out this.kinova_axis, sizeof(double), 3);
-            deserializer.Read(out this.kinova_dX, sizeof(double), 3);
+            deserializer.Read(out this.kinova_axisd, sizeof(double), 3);
             deserializer.Read(out this.gripperPos);
         }
 
@@ -64,11 +60,10 @@ namespace RosMessageTypes.KinovaTest
         {
             serializer.Write(this.time);
             serializer.Write(this.jointPos);
-            serializer.Write(this.jointVel);
             serializer.Write(this.kinova_X);
             serializer.Write(this.kinova_Xd);
             serializer.Write(this.kinova_axis);
-            serializer.Write(this.kinova_dX);
+            serializer.Write(this.kinova_axisd);
             serializer.Write(this.gripperPos);
         }
 
@@ -77,11 +72,10 @@ namespace RosMessageTypes.KinovaTest
             return "KinovaMsgMsg: " +
             "\ntime: " + time.ToString() +
             "\njointPos: " + System.String.Join(", ", jointPos.ToList()) +
-            "\njointVel: " + System.String.Join(", ", jointVel.ToList()) +
             "\nkinova_X: " + System.String.Join(", ", kinova_X.ToList()) +
             "\nkinova_Xd: " + System.String.Join(", ", kinova_Xd.ToList()) +
             "\nkinova_axis: " + System.String.Join(", ", kinova_axis.ToList()) +
-            "\nkinova_dX: " + System.String.Join(", ", kinova_dX.ToList()) +
+            "\nkinova_axisd: " + System.String.Join(", ", kinova_axisd.ToList()) +
             "\ngripperPos: " + gripperPos.ToString();
         }
 
