@@ -621,9 +621,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Primary Button Press",
+                    "name": "X Button Press",
                     "type": "Button",
                     "id": "d2845693-fdc6-4a04-922c-a4f1c2882c88",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Thumbstick Press",
+                    "type": "Button",
+                    "id": "876f8870-1780-4272-9422-f3d2dee85bea",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -770,7 +779,18 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Primary Button Press",
+                    "action": "X Button Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6e70017-86e7-4ba2-924d-8ec94c5a678f",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{LeftHand}/thumbstickclicked",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Thumbstick Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
