@@ -2,7 +2,6 @@
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using RosPointCloud2 = RosMessageTypes.Sensor.PointCloud2Msg;
-using RosKinovaMsg = RosMessageTypes.KinovaTest.KinovaMsgMsg;
 
 
 namespace CustomerVision
