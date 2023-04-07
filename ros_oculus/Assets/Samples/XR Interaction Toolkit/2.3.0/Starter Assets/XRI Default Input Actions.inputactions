@@ -630,6 +630,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Y Button Press",
+                    "type": "Button",
+                    "id": "9f0e6ba4-78a5-4a3c-b7f6-bc4f3a570a92",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Thumbstick Press",
                     "type": "Button",
                     "id": "876f8870-1780-4272-9422-f3d2dee85bea",
@@ -791,6 +800,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Thumbstick Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8362b26-2e4f-4f36-b853-2d374778ce83",
+                    "path": "<OculusTouchController>{LeftHand}/secondaryButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Y Button Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1335,6 +1355,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "B Button Press",
+                    "type": "Button",
+                    "id": "66f10898-8228-4907-9bd3-f604af0c9f21",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1467,6 +1496,17 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Translate Anchor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c345368-e863-4a82-a652-66c8568e270b",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "B Button Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

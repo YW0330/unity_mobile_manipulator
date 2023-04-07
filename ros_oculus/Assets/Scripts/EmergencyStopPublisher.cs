@@ -2,28 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
-using RosFloat32Msg = RosMessageTypes.Std.Float32Msg;
-
-public class GripperPositionPublisher : MonoBehaviour
+using RosBoolMsg = RosMessageTypes.Std.BoolMsg;
+public class EmergencyStopPublisher : MonoBehaviour
 {
     [SerializeField] HandController handController;
     [SerializeField] float publishMsgFreq = 0.5f;
     private ROSConnection ros;
-    private string topicname = "triggerVal";
+    private string topicname = "stop";
     private float timeElapsed;
-
     void Start()
     {
         ros = ROSConnection.GetOrCreateInstance();
-        ros.RegisterPublisher<RosFloat32Msg>(topicname);
+        ros.RegisterPublisher<RosBoolMsg>(topicname);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         timeElapsed += Time.deltaTime;
         if (timeElapsed > publishMsgFreq)
         {
-            RosFloat32Msg msg = new RosFloat32Msg(handController.GetTriggerValue());
+            RosBoolMsg msg = new RosBoolMsg(handController.GetSecondaryBtnIsPressed());
             ros.Publish(topicname, msg);
             timeElapsed = 0;
         }

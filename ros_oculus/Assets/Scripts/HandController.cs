@@ -4,33 +4,43 @@ using UnityEngine.InputSystem;
 
 public class HandController : MonoBehaviour
 {
-    [SerializeField] InputActionReference primaryButtonAction;
+    [SerializeField] InputActionReference primaryBtnPressedAction;
     [SerializeField] InputActionReference primary2DAxisMovedAction;
     [SerializeField] InputActionReference primary2DAxisPressedAction;
-    [SerializeField] InputActionReference triggerButtonAction;
-
+    [SerializeField] InputActionReference triggerPressedValueAction;
+    [SerializeField] InputActionReference leftHandSecondaryBtnPressedAction;
+    [SerializeField] InputActionReference rightHandSecondaryBtnPressedAction;
     private int primaryBtnCount = 0;
     private int thumbBtnCount = 0;
+    private bool isSecondaryBtnPressed = false;
 
     private void OnEnable()
     {
-        primaryButtonAction.action.performed += PrimaryBtnPressed;
+        primaryBtnPressedAction.action.performed += PrimaryBtnPressed;
         primary2DAxisPressedAction.action.performed += ThumbBtnPressed;
         primary2DAxisMovedAction.action.Enable();
-        triggerButtonAction.action.Enable();
+        triggerPressedValueAction.action.Enable();
+        leftHandSecondaryBtnPressedAction.action.performed += SecondaryBtnPressed;
+        rightHandSecondaryBtnPressedAction.action.performed += SecondaryBtnPressed;
     }
 
     private void OnDisable()
     {
-        primaryButtonAction.action.performed -= PrimaryBtnPressed;
+        primaryBtnPressedAction.action.performed -= PrimaryBtnPressed;
         primary2DAxisPressedAction.action.performed -= ThumbBtnPressed;
         primary2DAxisMovedAction.action.Disable();
-        triggerButtonAction.action.Disable();
+        triggerPressedValueAction.action.Disable();
+        leftHandSecondaryBtnPressedAction.action.performed -= SecondaryBtnPressed;
+        rightHandSecondaryBtnPressedAction.action.performed -= SecondaryBtnPressed;
     }
 
     private void PrimaryBtnPressed(InputAction.CallbackContext context)
     {
         primaryBtnCount++;
+    }
+    private void SecondaryBtnPressed(InputAction.CallbackContext context)
+    {
+        isSecondaryBtnPressed = true;
     }
     private void ThumbBtnPressed(InputAction.CallbackContext context)
     {
@@ -52,6 +62,11 @@ public class HandController : MonoBehaviour
 
     public float GetTriggerValue()
     {
-        return triggerButtonAction.action?.ReadValue<float>() ?? 0;
+        return triggerPressedValueAction.action?.ReadValue<float>() ?? 0;
+    }
+
+    public bool GetSecondaryBtnIsPressed()
+    {
+        return isSecondaryBtnPressed;
     }
 }

@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 64605685}
   - component: {fileID: 64605688}
   - component: {fileID: 64605689}
+  - component: {fileID: 64605690}
   m_Layer: 0
   m_Name: Functions
   m_TagString: Untagged
@@ -685,6 +686,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e842a9ad3bbf55438bd56297a284986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handController: {fileID: 1651801632}
+  publishMsgFreq: 0.5
+--- !u!114 &64605690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23edda5459547ad4592d6b3cda0c3ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handController: {fileID: 1651801632}
@@ -12561,13 +12576,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b06ae0311f1174bacbac79b6af4073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryButtonAction: {fileID: 1970361450346405197, guid: c348712bda248c246b8c49b3db54643f,
+  primaryBtnPressedAction: {fileID: 1970361450346405197, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   primary2DAxisMovedAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   primary2DAxisPressedAction: {fileID: 2481367105560203675, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  triggerButtonAction: {fileID: 71106601250685021, guid: c348712bda248c246b8c49b3db54643f,
+  triggerPressedValueAction: {fileID: 71106601250685021, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  leftHandSecondaryBtnPressedAction: {fileID: -3706649712363177369, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  rightHandSecondaryBtnPressedAction: {fileID: -3062116038425857835, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
 --- !u!4 &1664451987 stripped
 Transform:
@@ -13401,7 +13420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acef0b79454c9b4dae3f8139bc4ba77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RosIPAddress: 192.168.50.194
+  m_RosIPAddress: 192.168.0.15
   m_RosPort: 10000
   m_ConnectOnStart: 1
   m_KeepaliveTime: 1
