@@ -14,9 +14,10 @@ public class UDPDisplayROSImage : MonoBehaviour
     UdpClient client;
     Texture2D texture2D;
     bool isMessageReceived = false;
-    int width = 0;
-    int height = 0;
-    int step = 0;
+    int width;
+    int height;
+    int step;
+    int data_step;
 
     IEnumerable<byte> imgData = Enumerable.Empty<byte>();
     void Start()
@@ -51,8 +52,9 @@ public class UDPDisplayROSImage : MonoBehaviour
                 width = arr[0];
                 height = arr[1];
                 step = arr[2];
+                data_step = arr[3];
                 imgData = Enumerable.Empty<byte>();
-                for (int i = 0; i < height; i += 65)
+                for (int i = 0; i < height; i += data_step)
                     imgData = imgData.Concat(client.Receive(ref anyIP));
                 isMessageReceived = true;
             }

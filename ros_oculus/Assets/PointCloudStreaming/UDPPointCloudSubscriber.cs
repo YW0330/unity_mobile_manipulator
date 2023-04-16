@@ -23,6 +23,7 @@ namespace CustomerVision
         int height;
         int row_step;
         int point_step;
+        int data_step;
         private byte[] byteArray;
         IEnumerable<byte> pointData = Enumerable.Empty<byte>();
         void Start()
@@ -57,8 +58,9 @@ namespace CustomerVision
                     height = arr[1];
                     row_step = arr[2];
                     point_step = arr[3];
+                    data_step = arr[4];
                     pointData = Enumerable.Empty<byte>();
-                    for (int i = 0; i < height; i += 5)
+                    for (int i = 0; i < height; i += data_step)
                         pointData = pointData.Concat(client.Receive(ref anyIP));
                     isMessageReceived = true;
                 }
