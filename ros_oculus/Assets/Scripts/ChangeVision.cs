@@ -16,7 +16,6 @@ public class ChangeVision : MonoBehaviour
     {
         Vector2 tmp = handController.GetPrimary2DAxisValue();
         if ((handController.GetThumbBtnCount() % 2) == 0)
-            // transform.Translate((tmp[0] * Vector3.right + tmp[1] * Vector3.forward) * step);
             plane.GetComponent<TeleportationArea>().enabled = true;
         else
         {

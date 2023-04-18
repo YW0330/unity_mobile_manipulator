@@ -5147,7 +5147,6 @@ GameObject:
   - component: {fileID: 812871974}
   - component: {fileID: 812871973}
   - component: {fileID: 812871977}
-  - component: {fileID: 812871978}
   m_Layer: 0
   m_Name: ImageDisplay
   m_TagString: Untagged
@@ -5240,21 +5239,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812871971}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c3e55bb84d552e468fb442a6c058078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &812871978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812871971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f706a8a9f1b584449a83438534df11e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c3e55bb84d552e468fb442a6c058078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   port: 9090
@@ -13009,7 +12996,6 @@ GameObject:
   - component: {fileID: 1735214969}
   - component: {fileID: 1735214968}
   - component: {fileID: 1735214971}
-  - component: {fileID: 1735214972}
   m_Layer: 0
   m_Name: camera_link
   m_TagString: Untagged
@@ -13117,26 +13103,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735214966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 833358026d28116c798832de82c06d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subscriber: {fileID: 1783301795}
-  pointSize: 1
---- !u!114 &1735214972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735214966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f4760b7a4afb424ab7e79eb6078f8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subscriber: {fileID: 1783301796}
   pointSize: 1
 --- !u!1 &1738942407
 GameObject:
@@ -13400,7 +13372,6 @@ GameObject:
   - component: {fileID: 1783301794}
   - component: {fileID: 1783301793}
   - component: {fileID: 1783301795}
-  - component: {fileID: 1783301796}
   m_Layer: 0
   m_Name: Ros Connection
   m_TagString: Untagged
@@ -13453,21 +13424,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783301792}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52b5603cf9b83d128b92af0a2ba3d51c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1783301796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783301792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85046143d2c184f47b6a959d9018e872, type: 3}
+  m_Script: {fileID: 11500000, guid: 52b5603cf9b83d128b92af0a2ba3d51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   port: 9085
