@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 64605688}
   - component: {fileID: 64605689}
   - component: {fileID: 64605690}
+  - component: {fileID: 64605691}
   m_Layer: 0
   m_Name: Functions
   m_TagString: Untagged
@@ -700,6 +701,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23edda5459547ad4592d6b3cda0c3ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handController: {fileID: 1651801632}
+  publishMsgFreq: 0.5
+--- !u!114 &64605691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a16bb0cf3552cc418bc244e4d36d897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handController: {fileID: 1651801632}
@@ -7895,7 +7910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handController: {fileID: 1651801632}
-  plane: {fileID: 898809410}
+  LocomotionSystem: {fileID: 1374090442}
   step: 0.05
 --- !u!4 &1060574649 stripped
 Transform:
@@ -12569,11 +12584,13 @@ MonoBehaviour:
     type: 3}
   primary2DAxisPressedAction: {fileID: 2481367105560203675, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  triggerPressedValueAction: {fileID: 71106601250685021, guid: c348712bda248c246b8c49b3db54643f,
+  triggerPressedValueAction: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   leftHandSecondaryBtnPressedAction: {fileID: -3706649712363177369, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   rightHandSecondaryBtnPressedAction: {fileID: -3062116038425857835, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  gripPressedAction: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
 --- !u!4 &1664451987 stripped
 Transform:

@@ -10,9 +10,12 @@ public class HandController : MonoBehaviour
     [SerializeField] InputActionReference triggerPressedValueAction;
     [SerializeField] InputActionReference leftHandSecondaryBtnPressedAction;
     [SerializeField] InputActionReference rightHandSecondaryBtnPressedAction;
+    [SerializeField] InputActionReference gripPressedAction;
     private int primaryBtnCount = 0;
     private int thumbBtnCount = 0;
     private bool isSecondaryBtnPressed = false;
+
+    private bool isGripBtnPressed = false;
 
     private void OnEnable()
     {
@@ -22,6 +25,8 @@ public class HandController : MonoBehaviour
         triggerPressedValueAction.action.Enable();
         leftHandSecondaryBtnPressedAction.action.performed += SecondaryBtnPressed;
         rightHandSecondaryBtnPressedAction.action.performed += SecondaryBtnPressed;
+        gripPressedAction.action.started += GripBtnPressed;
+        gripPressedAction.action.canceled += GripBtnRealeased;
     }
 
     private void OnDisable()
@@ -32,8 +37,18 @@ public class HandController : MonoBehaviour
         triggerPressedValueAction.action.Disable();
         leftHandSecondaryBtnPressedAction.action.performed -= SecondaryBtnPressed;
         rightHandSecondaryBtnPressedAction.action.performed -= SecondaryBtnPressed;
+        gripPressedAction.action.started -= GripBtnPressed;
+        gripPressedAction.action.canceled -= GripBtnRealeased;
     }
 
+    private void GripBtnPressed(InputAction.CallbackContext context)
+    {
+        isGripBtnPressed = true;
+    }
+    private void GripBtnRealeased(InputAction.CallbackContext context)
+    {
+        isGripBtnPressed = false;
+    }
     private void PrimaryBtnPressed(InputAction.CallbackContext context)
     {
         primaryBtnCount++;
@@ -64,9 +79,13 @@ public class HandController : MonoBehaviour
     {
         return triggerPressedValueAction.action?.ReadValue<float>() ?? 0;
     }
-
     public bool GetSecondaryBtnIsPressed()
     {
         return isSecondaryBtnPressed;
+    }
+
+    public bool GetGripBtnPressed()
+    {
+        return isGripBtnPressed;
     }
 }
