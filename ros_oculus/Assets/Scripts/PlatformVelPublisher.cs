@@ -44,7 +44,7 @@ public class PlatformVelPublisher : MonoBehaviour
 
     private void SetTwist(float linear_x, float angular_z)
     {
-        msg.linear.x = Mathf.Abs(linear_x) > 0.5 ? linear_x * 0.15f : 0;
+        msg.linear.x = Mathf.Abs(linear_x) > 0.5 ? linear_x * 0.08f : 0;
         msg.linear.y = 0;
         msg.linear.z = 0;
         msg.angular.x = 0;
