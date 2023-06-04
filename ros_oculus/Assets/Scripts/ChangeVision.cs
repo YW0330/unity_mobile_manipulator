@@ -9,26 +9,22 @@ public class ChangeVision : MonoBehaviour
     [SerializeField] float step = 0.05f;
     void Start()
     {
-
     }
 
     void FixedUpdate()
     {
-        Vector2 tmp = handController.GetPrimary2DAxisValue();
         if (handController.GetGripBtnPressed())
-        {
             LocomotionSystem.SetActive(false);
-        }
         else
         {
             if ((handController.GetThumbBtnCount() % 2) == 0)
                 LocomotionSystem.SetActive(true);
             else
             {
+                Vector2 tmp = handController.GetPrimary2DAxisValue();
                 LocomotionSystem.SetActive(false);
                 transform.Translate(tmp[1] * Vector3.up * step);
             }
         }
-
     }
 }

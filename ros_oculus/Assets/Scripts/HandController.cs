@@ -14,13 +14,12 @@ public class HandController : MonoBehaviour
     private int primaryBtnCount = 0;
     private int thumbBtnCount = 0;
     private bool isSecondaryBtnPressed = false;
-
     private bool isGripBtnPressed = false;
 
     private void OnEnable()
     {
         primaryBtnPressedAction.action.performed += PrimaryBtnPressed;
-        primary2DAxisPressedAction.action.performed += ThumbBtnPressed;
+        primary2DAxisPressedAction.action.performed += ThumbBtnCount;
         primary2DAxisMovedAction.action.Enable();
         triggerPressedValueAction.action.Enable();
         leftHandSecondaryBtnPressedAction.action.performed += SecondaryBtnPressed;
@@ -32,7 +31,7 @@ public class HandController : MonoBehaviour
     private void OnDisable()
     {
         primaryBtnPressedAction.action.performed -= PrimaryBtnPressed;
-        primary2DAxisPressedAction.action.performed -= ThumbBtnPressed;
+        primary2DAxisPressedAction.action.performed -= ThumbBtnCount;
         primary2DAxisMovedAction.action.Disable();
         triggerPressedValueAction.action.Disable();
         leftHandSecondaryBtnPressedAction.action.performed -= SecondaryBtnPressed;
@@ -57,7 +56,7 @@ public class HandController : MonoBehaviour
     {
         isSecondaryBtnPressed = true;
     }
-    private void ThumbBtnPressed(InputAction.CallbackContext context)
+    private void ThumbBtnCount(InputAction.CallbackContext context)
     {
         thumbBtnCount++;
     }
