@@ -28,7 +28,7 @@ public class PlatformVelPublisher : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
-        if (timeElapsed > publishMsgFreq)
+        if ((handController.GetPrimaryBtnCount() % 2) != 0 && (timeElapsed > publishMsgFreq))
         {
             if (handController.GetGripBtnPressed())
             {
