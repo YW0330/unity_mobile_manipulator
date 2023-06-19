@@ -57,13 +57,14 @@ public class BuildWallFromMap : MonoBehaviour
         {
             for (int j = 0; j < map.width; j++)
             {
-                if (map.data[i * map.width + j] == 100)
+                // if (map.data[i * map.width + j] == 100)
+                if (map.data[i * map.width + j] > 60)
                 {
                     Vector3 point = new Vector3(j, 0, i);
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     cube.GetComponent<MeshRenderer>().material = Resources.Load("Materials/Wall", typeof(Material)) as Material;
                     cube.transform.position = point * map.scale;
-                    cube.transform.localScale = new Vector3(0.05f, 0.6f, 0.05f);
+                    cube.transform.localScale = new Vector3(0.05f, 0.8f, 0.05f);
                     cube.transform.parent = parents.transform;
                 }
             }
