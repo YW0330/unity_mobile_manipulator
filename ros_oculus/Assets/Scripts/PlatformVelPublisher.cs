@@ -8,8 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlatformVelPublisher : MonoBehaviour
 {
-    [SerializeField] HandController handController;
-
+    HandController handController;
     [SerializeField] float publishMsgFreq = 0.5f;
     private ROSConnection ros;
 
@@ -21,6 +20,7 @@ public class PlatformVelPublisher : MonoBehaviour
 
     void Start()
     {
+        handController = GetComponent<HandController>();
         ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<RosTwistMsg>(topicname);
         msg = new RosTwistMsg();

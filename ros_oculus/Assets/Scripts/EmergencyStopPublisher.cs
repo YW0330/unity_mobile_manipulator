@@ -5,13 +5,14 @@ using Unity.Robotics.ROSTCPConnector;
 using RosBoolMsg = RosMessageTypes.Std.BoolMsg;
 public class EmergencyStopPublisher : MonoBehaviour
 {
-    [SerializeField] HandController handController;
+    HandController handController;
     [SerializeField] float publishMsgFreq = 0.5f;
     private ROSConnection ros;
     private string topicname = "stop";
     private float timeElapsed;
     void Start()
     {
+        handController = GetComponent<HandController>();
         ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<RosBoolMsg>(topicname);
     }

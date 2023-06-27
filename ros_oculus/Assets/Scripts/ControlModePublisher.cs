@@ -5,8 +5,7 @@ using Unity.Robotics.ROSTCPConnector;
 using RosBoolMsg = RosMessageTypes.Std.BoolMsg;
 public class ControlModePublisher : MonoBehaviour
 {
-    [SerializeField] HandController handController;
-
+    HandController handController;
     [SerializeField] float publishMsgFreq = 0.5f;
     private ROSConnection ros;
 
@@ -16,6 +15,7 @@ public class ControlModePublisher : MonoBehaviour
 
     void Start()
     {
+        handController = GetComponent<HandController>();
         ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<RosBoolMsg>(topicname);
     }

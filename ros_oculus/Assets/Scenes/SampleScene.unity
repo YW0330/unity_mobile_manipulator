@@ -625,10 +625,12 @@ GameObject:
   m_Component:
   - component: {fileID: 64605684}
   - component: {fileID: 64605685}
+  - component: {fileID: 64605693}
   - component: {fileID: 64605688}
   - component: {fileID: 64605689}
   - component: {fileID: 64605690}
   - component: {fileID: 64605691}
+  - component: {fileID: 64605692}
   m_Layer: 0
   m_Name: Functions
   m_TagString: Untagged
@@ -675,7 +677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6014b3795407e4b43a0391a3d87654ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handController: {fileID: 1651801632}
   publishMsgFreq: 0.5
 --- !u!114 &64605689
 MonoBehaviour:
@@ -689,7 +690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e842a9ad3bbf55438bd56297a284986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handController: {fileID: 1651801632}
   publishMsgFreq: 0.5
 --- !u!114 &64605690
 MonoBehaviour:
@@ -703,7 +703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23edda5459547ad4592d6b3cda0c3ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handController: {fileID: 1651801632}
   publishMsgFreq: 0.5
 --- !u!114 &64605691
 MonoBehaviour:
@@ -717,8 +716,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a16bb0cf3552cc418bc244e4d36d897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handController: {fileID: 1651801632}
   publishMsgFreq: 0.5
+--- !u!114 &64605692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3286a490bb9015438948e85e1c90cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandController: {fileID: 922806487}
+  switchMode:
+    intesity: 0.1
+    duration: 0.3
+  awake:
+    intesity: 0.5
+    duration: 0.8
+--- !u!114 &64605693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64605682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b06ae0311f1174bacbac79b6af4073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryBtnPressedAction: {fileID: 1970361450346405197, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  primary2DAxisMovedAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  primary2DAxisPressedAction: {fileID: 2481367105560203675, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  triggerPressedValueAction: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  leftHandSecondaryBtnPressedAction: {fileID: -3706649712363177369, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  rightHandSecondaryBtnPressedAction: {fileID: -3062116038425857835, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  gripPressedAction: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
 --- !u!1001 &119537983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7909,7 +7952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b4098d82163a24fbe4c67ad0b42196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handController: {fileID: 1651801632}
+  handController: {fileID: 64605693}
   LocomotionSystem: {fileID: 1374090442}
   step: 0.05
 --- !u!4 &1060574649 stripped
@@ -12515,7 +12558,6 @@ GameObject:
   - component: {fileID: 1651801631}
   - component: {fileID: 1651801629}
   - component: {fileID: 1651801630}
-  - component: {fileID: 1651801632}
   m_Layer: 0
   m_Name: XR Interaction Manager
   m_TagString: Untagged
@@ -12566,32 +12608,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1651801632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651801628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b06ae0311f1174bacbac79b6af4073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryBtnPressedAction: {fileID: 1970361450346405197, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  primary2DAxisMovedAction: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  primary2DAxisPressedAction: {fileID: 2481367105560203675, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  triggerPressedValueAction: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  leftHandSecondaryBtnPressedAction: {fileID: -3706649712363177369, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  rightHandSecondaryBtnPressedAction: {fileID: -3062116038425857835, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  gripPressedAction: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
 --- !u!4 &1664451987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7994999132119713112, guid: a6ed0f9511b795e10918f20ff804a08e,

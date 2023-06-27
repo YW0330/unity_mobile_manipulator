@@ -6,7 +6,7 @@ using RosFloat32Msg = RosMessageTypes.Std.Float32Msg;
 
 public class GripperPositionPublisher : MonoBehaviour
 {
-    [SerializeField] HandController handController;
+    HandController handController;
     [SerializeField] float publishMsgFreq = 0.5f;
     private ROSConnection ros;
     private string topicname = "triggerVal";
@@ -14,6 +14,7 @@ public class GripperPositionPublisher : MonoBehaviour
 
     void Start()
     {
+        handController = GetComponent<HandController>();
         ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<RosFloat32Msg>(topicname);
     }

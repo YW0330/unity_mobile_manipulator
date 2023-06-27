@@ -9,6 +9,7 @@ public class ChangeVision : MonoBehaviour
     [SerializeField] float step = 0.05f;
     void Start()
     {
+
     }
 
     void FixedUpdate()
