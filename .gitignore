@@ -1,5 +1,13 @@
 Logs/
-obj/
+Temp/
 Library/
+bin/
+UserSettings/
+
 .vscode/
+obj/
 *.csproj
+*.sln
+
+*.apk
+test*/
